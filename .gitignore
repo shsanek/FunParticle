@@ -88,3 +88,18 @@ fastlane/test_output
 # https://github.com/johnno1962/injectionforxcode
 
 iOSInjectionProject/
+*.DS_Store
+*/xcshareddata
+
+FunParticle.xcodeproj/project.xcworkspace/xcshareddata
+*.xcworkspacedata
+
+.DS_Store
+/.build
+/Packages
+/*.xcodeproj
+xcuserdata/
+DerivedData/
+.swiftpm/config/registries.json
+.swiftpm/xcode/package.xcworkspace/contents.xcworkspacedata
+.netrc
