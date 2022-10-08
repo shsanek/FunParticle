@@ -1,6 +1,5 @@
 import SwiftUI
 
-
 struct SystemControllView: View {
     @ObservedObject var viewModel: SystemControllViewModel
 

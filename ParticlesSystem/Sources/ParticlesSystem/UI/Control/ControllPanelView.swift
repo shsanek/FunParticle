@@ -47,7 +47,7 @@ struct ControllPanelView_Previews: PreviewProvider {
     static var previews: some View {
         let nameManager = NameManger()
         let sizeManager = SizeManger()
-        let controller = try! ParticlesSystemsController()
+        let controller = ParticlesSystemsController()
         let vm = ControllPanelViewModel(
             controller: controller,
             nameManger: nameManager,

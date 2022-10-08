@@ -1,7 +1,6 @@
 import Combine
 import SwiftUI
 
-
 final class SystemControllViewModel: Identifiable, ObservableObject {
     var id: ObjectIdentifier {
         ObjectIdentifier(system)

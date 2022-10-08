@@ -7,6 +7,6 @@ public final class Dependency {
 
 
     public init() throws {
-        self.controller = try ParticlesSystemsController()
+        self.controller = ParticlesSystemsController()
     }
 }
