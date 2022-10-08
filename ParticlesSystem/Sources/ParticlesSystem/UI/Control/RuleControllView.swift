@@ -67,7 +67,11 @@ struct RuleControllView: View {
 
 struct RuleControllView_Previews: PreviewProvider {
     static var previews: some View {
-        let rule = ParticalSystemRuleMock()
+        let rule = ParticalSystemGRule(
+            system1: ParticlesSystemMock(),
+            system2: ParticlesSystemMock(),
+            g: 0
+        )
         let nameManager = NameManger()
         nameManager.setName("System1", for: rule.system1)
         nameManager.setName("System2", for: rule.system2)

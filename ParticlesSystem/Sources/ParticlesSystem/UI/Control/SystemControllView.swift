@@ -42,7 +42,7 @@ struct SystemControllView: View {
                 }
                 Slider(
                     value: $value,
-                    in: 0...1000,
+                    in: 0...100000,
                     onEditingChanged: { editing in
                         if !editing {
                             viewModel.count = Int(value)

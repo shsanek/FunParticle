@@ -58,6 +58,6 @@ public struct MainView: View {
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        return MainView(dependency: Dependency())
+        return MainView(dependency: try! Dependency())
     }
 }

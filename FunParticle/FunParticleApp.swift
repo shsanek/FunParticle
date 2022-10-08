@@ -10,7 +10,7 @@ import ParticlesSystem
 
 @main
 struct FunParticleApp: App {
-    static let dependency = Dependency()
+    static let dependency = try! Dependency()
 
     var body: some Scene {
         WindowGroup {

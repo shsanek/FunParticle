@@ -1,6 +1,4 @@
-
-
-final class ParticalSystemGRule: IParticalSystemRule {
+final class ParticalSystemGRule {
     var system1: IParticlesSystem
     var system2: IParticlesSystem
 

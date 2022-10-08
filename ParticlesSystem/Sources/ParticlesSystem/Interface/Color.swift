@@ -23,3 +23,14 @@ struct Color {
         return color | r | g | b
     }
 }
+
+import simd
+
+extension Color {
+    var value: vector_float4 {
+        let r = Float32(r) / 256
+        let g = Float32(g) / 256
+        let b = Float32(b) / 256
+        return .init(r, g, b, 1)
+    }
+}

@@ -9,13 +9,13 @@ final class RuleControllViewModel: Identifiable, ObservableObject {
 
     @Published var value: CGFloat {
         didSet {
-            rule.g = value
+            rule.g = ParticlesSystemFloat(value)
         }
     }
 
     @Published var max: CGFloat {
         didSet {
-            rule.maxDistanse = max
+            rule.maxDistanse = ParticlesSystemFloat(max)
         }
     }
 
@@ -32,19 +32,19 @@ final class RuleControllViewModel: Identifiable, ObservableObject {
 
     @Published var systems: [Container] = []
 
-    let rule: IParticalSystemRule
+    let rule: ParticalSystemGRule
     private let removeHandler: () -> Void
     private let nameManager: NameManger
     private var cancellables: [AnyCancellable] = []
     private var controller: IParticlesSystemsController
 
-    init(rule: IParticalSystemRule, nameManager: NameManger, controller: IParticlesSystemsController, removeHandler: @escaping () -> Void) {
+    init(rule: ParticalSystemGRule, nameManager: NameManger, controller: IParticlesSystemsController, removeHandler: @escaping () -> Void) {
         self.rule = rule
         self.nameManager = nameManager
         self.removeHandler = removeHandler
         self.controller = controller
-        self.value = rule.g
-        self.max = rule.maxDistanse
+        self.value = CGFloat(rule.g)
+        self.max = CGFloat(rule.maxDistanse)
         self.system1Container = .init(name: "", system: rule.system1)
         self.system2Container = .init(name: "", system: rule.system2)
         update()

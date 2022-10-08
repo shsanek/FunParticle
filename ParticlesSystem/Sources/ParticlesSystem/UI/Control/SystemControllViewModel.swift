@@ -15,7 +15,7 @@ final class SystemControllViewModel: Identifiable, ObservableObject {
 
     @Published var resistance: CGFloat = 0 {
         didSet {
-            system.resistance = resistance
+            system.resistance = ParticlesSystemFloat(resistance)
         }
     }
     @Published var systemName: String = "" {
@@ -58,9 +58,9 @@ final class SystemControllViewModel: Identifiable, ObservableObject {
         self.nameManager = nameManager
         self.removeHandler = removeHandler
         self.sizeManger = sizeManger
-        self.count = system.particles.count
+        self.count = system.container.particles.count
         self.colorHex = String(String(format:"%02X", system.color.uint).suffix(6))
-        self.resistance = system.resistance
+        self.resistance = CGFloat(system.resistance)
         setHooks()
     }
 
@@ -72,7 +72,7 @@ final class SystemControllViewModel: Identifiable, ObservableObject {
         system.generate(
             in: .init(
                 origin: .zero,
-                size: sizeManger.sizeSubject.value
+                size: sizeManger.sizeSubject.value.psSize
             ),
             count: count
         )

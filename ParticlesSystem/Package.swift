@@ -5,7 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "ParticlesSystem",
-    platforms: [.macOS(.v11), .iOS(.v13)],
+    platforms: [.iOS(.v13), .macOS(.v11)],
     products: [
         .library(
             name: "ParticlesSystem",

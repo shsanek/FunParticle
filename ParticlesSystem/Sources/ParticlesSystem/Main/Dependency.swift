@@ -1,7 +1,12 @@
-public struct Dependency {
+import MetalKit
+
+public final class Dependency {
     let nameManager = NameManger()
     let sizeManager = SizeManger()
-    let controller: IParticlesSystemsController = ParticlesSystemsController()
+    let controller: IParticlesSystemsController
 
-    public init() {}
+
+    public init() throws {
+        self.controller = try ParticlesSystemsController()
+    }
 }

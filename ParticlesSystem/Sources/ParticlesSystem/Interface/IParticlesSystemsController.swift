@@ -1,25 +1,30 @@
+import MetalKit
+
 protocol IParticlesSystemsController {
     var systems: [IParticlesSystem] { get }
-    var rules: [IParticalSystemRule] { get }
+    var rules: [ParticalSystemGRule] { get }
 
-    func addRule(_ rule: IParticalSystemRule) throws
-    func removeRule(_ rule: IParticalSystemRule) throws
+    func addRule(_ rule: ParticalSystemGRule) throws
+    func removeRule(_ rule: ParticalSystemGRule) throws
     func addSystem(_ system: IParticlesSystem) throws
     func removeSystem(_ system: IParticlesSystem) throws
-
-    func loop(in rect: ParticlesSystemRect, time: ParticlesSystemFloat)
 }
 
 final class ParticlesSystemsControllerMock: IParticlesSystemsController {
     var systems: [IParticlesSystem] = []
-    var rules: [IParticalSystemRule] = []
+    var rules: [ParticalSystemGRule] = []
 
     init() {}
 
-    func addRule(_ rule: IParticalSystemRule) throws { rules.append(rule) }
-    func removeRule(_ rule: IParticalSystemRule) throws { rules.removeAll(where: { $0 === rule })}
+    func addRule(_ rule: ParticalSystemGRule) throws { rules.append(rule) }
+    func removeRule(_ rule: ParticalSystemGRule) throws { rules.removeAll(where: { $0 === rule })}
     func addSystem(_ system: IParticlesSystem) throws { systems.append(system) }
     func removeSystem(_ system: IParticlesSystem) throws { systems.removeAll(where: { $0 === system })}
 
-    func loop(in rect: ParticlesSystemRect, time: ParticlesSystemFloat) {}
+    func loop(
+        in rect: ParticlesSystemRect,
+        time: ParticlesSystemFloat,
+        descriptor: MTLRenderPassDescriptor?,
+        drawable: CAMetalDrawable?
+    ) throws {}
 }

@@ -31,8 +31,8 @@ final class ParticlesSystemRender {
 
         for system in particlesSystemsController.systems {
             let color = system.color.uint
-            for particle in system.particles {
-                let position = Int(particle.position.y * scale) * widht + Int(particle.position.x * scale)
+            for particle in system.container.particles.values {
+                let position = Int(particle.position.y * ParticlesSystemFloat(scale)) * widht + Int(particle.position.x * ParticlesSystemFloat(scale))
                 if position > 0 {
                     data[position % count] = color
                 }
