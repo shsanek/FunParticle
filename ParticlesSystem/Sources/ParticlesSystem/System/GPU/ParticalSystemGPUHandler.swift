@@ -137,7 +137,7 @@ final class ParticalSystemGPUHandler {
         encoder.setVertexBytes(&size, length: MemoryLayout<ParticlesSystemSize>.stride, index: 0)
         encoder.setVertexBuffer(try container.particles.getBuffer(with: device), offset: 0, index: 1)
 
-        var scale: ParticlesSystemFloat = 3
+        var scale: ParticlesSystemFloat = 1
         encoder.setVertexBytes(&scale, length: MemoryLayout<ParticlesSystemFloat>.stride, index: 2)
 
         var model = model

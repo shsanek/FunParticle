@@ -16,11 +16,14 @@ struct ParticleModel {
 struct ParticleSystemModel {
     float resistance;
     float4 color;
+    float2 gravitation;
 };
 
 struct ParticleSystemRuleModel {
     float g;
     float maxDistanse;
+    float minDistanse;
+    int isSelf;
 };
 
 kernel void clearAccelerations(
@@ -44,9 +47,10 @@ kernel void runRule(
     for (int i = 0; i < *count; i++) {
         float2 delta = particles[index].position - target[i].position;
         float distance = metal::length(delta);
-        if (distance > 0 && distance < (*model).maxDistanse) {
-            float f = (*model).g * (particles[index].mass * target[i].mass) / (distance);
-            accelerations[index] += delta * (f * (*time));
+        if (distance > 0.00001 && distance < (*model).maxDistanse) {
+            float f = (*model).g * (particles[index].mass * target[i].mass);
+            f = f / (distance) - f;
+            accelerations[index] += metal::normalize(delta) * (f * (*time));
         }
     }
 }
@@ -61,6 +65,7 @@ kernel void applyAccelerations(
                                )
 {
     float2 velocity = particles[index].velocity + accelerations[index] * (*time);
+    velocity -= model->gravitation * (*time);
     velocity -= (velocity * model->resistance * (*time));
     particles[index].velocity = velocity;
     particles[index].position += velocity;

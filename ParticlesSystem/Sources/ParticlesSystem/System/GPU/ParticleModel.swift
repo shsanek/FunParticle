@@ -11,11 +11,14 @@ struct ParticleModel: RawEncodable {
 struct ParticleSystemModel: RawEncodable {
     var resistance: ParticlesSystemFloat = 0
     var color: vector_float4 = .zero
+    var gravitation: vector_float2 = .zero
 }
 
 struct ParticleSystemRuleModel: RawEncodable {
     var g: ParticlesSystemFloat = 0
     var maxDistanse: ParticlesSystemFloat = 0
+    var minDistanse: ParticlesSystemFloat = 0
+    var isSelf: Int32 = 0
 }
 
 
